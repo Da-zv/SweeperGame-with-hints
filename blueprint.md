@@ -2,7 +2,8 @@
 
 ## Overview
 
-A classic Minesweeper game with user interface and an AI-powered hint feature. The AI hint feature uses Groq API with openai gpt oos 20B model to suggest the next best move.
+A classic Minesweeper game with user interface and an AI-powered hint feature. 
+The AI hint feature uses Groq API with qwen/qwen3-32b model to suggest the next best move.
 
 ## Style, Design, and Features
 
@@ -17,10 +18,11 @@ A classic Minesweeper game with user interface and an AI-powered hint feature. T
     *   A settings dialog to customize the board size and number of mines.
     *   A theme toggle to switch between light and dark mode.
 *   **AI Hints:**
-    *   A button to request a hint from a GPT model.
+    *   A button to request a hint from a AI model.
     *   The AI is provided with the current board state and asked for a safe move.
     *   The hint is displayed in a alert dialog.
 
 ### Current Plan
 
 The project is complete. The application is fully functional with a UI and AI-powered hints.
+But could use some prompt engineering to make AI models more reliable.
