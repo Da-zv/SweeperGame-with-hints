@@ -18,7 +18,7 @@ The AI hint feature uses Groq API with qwen/qwen3-32b model to suggest the next 
     *   A settings dialog to customize the board size and number of mines.
     *   A theme toggle to switch between light and dark mode.
 *   **AI Hints:**
-    *   A button to request a hint from a AI model.
+    *   A button to request a hint from AI model.
     *   The AI is provided with the current board state and asked for a safe move.
     *   The hint is displayed in a alert dialog.
 
