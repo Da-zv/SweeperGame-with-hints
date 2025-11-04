@@ -1,0 +1,22 @@
+// This is an example file. The actual firebase_options.dart file is
+// required to run the application but should NOT be committed to version control.
+
+// To generate the necessary `lib/firebase_options.dart` file, follow these steps:
+
+// 1. **Install the FlutterFire CLI**
+//    If you don't have it installed, run this command in your terminal:
+//    `dart pub global activate flutterfire_cli`
+
+// 2. **Log into Firebase**
+//    Ensure you are logged into the correct Firebase account:
+//    `firebase login`
+
+// 3. **Configure the project**
+//    From the root directory of this project, run the `configure` command.
+//    This command will communicate with Firebase, identify the apps in your
+//    project, and generate the `lib/firebase_options.dart` file for you.
+//
+//    `flutterfire configure`
+
+// After completing these steps, the required file will be created, and your
+// application will be correctly configured to connect with your Firebase project.

@@ -1,0 +1,59 @@
+# Flutter
+/build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Android
+/android/app/build/
+/android/build/
+/android/.gradle/
+android/key.properties
+android/local.properties
+/android/app/src/main/assets/flutter_assets/*
+
+# iOS
+/ios/Pods/
+/ios/Flutter/App.framework
+/ios/Flutter/engine
+/ios/Flutter/flutter_assets/
+/ios/.symlinks/
+/ios/Runner/GeneratedPluginRegistrant.*
+
+# Web
+/web/build/
+
+# IDE
+.idea/
+*.iml
+
+# Sensitive
+lib/firebase_options.dart
+lib/api_keys.dart
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+web/favicon.png
+web/index.html
+web/manifest.json
+.firebaserc
+.metadata
+analysis_options.yaml
+devtools_options.yaml
+firebase.json
+GEMINI.md
+myapp.iml
+pubspec.lock
+pubspec.yaml
+/web/
+/test/
+/.firebase/
+/.idx/

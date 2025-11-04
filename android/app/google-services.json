@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "522053297576",
+    "project_id": "minesweeper-test-32495180",
+    "storage_bucket": "minesweeper-test-32495180.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:522053297576:android:f1fe7b27008d5ef7b6e99d",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGfUSBo3RRSNMcuM9rWnIOvFPggCMEL3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
