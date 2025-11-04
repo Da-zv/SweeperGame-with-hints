@@ -281,10 +281,10 @@ class SweeperGameState extends State<SweeperGame> {
                 children: [
                   Text(hintText),
                   const SizedBox(height: 20),
-                  const Text("Prompt:",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 8),
-                  Text(prompt),
+                  //const Text("Prompt:",
+                  //    style: TextStyle(fontWeight: FontWeight.bold)),
+                  //const SizedBox(height: 8),
+                  //Text(prompt),
                 ],
               ),
             ),
@@ -399,7 +399,7 @@ class SweeperGameState extends State<SweeperGame> {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
               color: theme.colorScheme.background.withOpacity(0.8),
               borderRadius: BorderRadius.circular(12),
@@ -415,17 +415,17 @@ class SweeperGameState extends State<SweeperGame> {
             children: [
               Column(
                 children: [
-                  Text('Mines', style: theme.textTheme.labelLarge),
+                  Text('Mines', style: theme.textTheme.labelSmall),
                   Text(widget.mines.toString(),
-                      style: theme.textTheme.titleLarge),
+                      style: theme.textTheme.titleSmall),
                 ],
               ),
               Column(
                 children: [
-                  Text('Time', style: theme.textTheme.labelLarge),
+                  Text('Time', style: theme.textTheme.labelSmall),
                   Text(
                     _formatTime(_stopwatch.elapsed),
-                    style: theme.textTheme.titleLarge
+                    style: theme.textTheme.titleSmall
                         ?.copyWith(color: theme.colorScheme.primary),
                   ),
                 ],
@@ -448,105 +448,109 @@ class SweeperGameState extends State<SweeperGame> {
                   theme.textTheme.displayLarge?.copyWith(color: Colors.green)),
         const SizedBox(height: 16),
         Expanded(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final double cellSize = min(
-                (constraints.maxWidth - 30) / widget.cols, // -30 for row headers
-                (constraints.maxHeight - 30) /
-                    widget.rows, // -30 for col headers
-              );
+          child: Center(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final double cellSize = min(
+                  (constraints.maxWidth - 30) / widget.cols, // -30 for row headers
+                  (constraints.maxHeight - 30) /
+                      widget.rows, // -30 for col headers
+                );
 
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Column Headers
-                  Row(
-                    children: [
-                      const SizedBox(
-                          width: 30), // Placeholder for row header column
-                      ...List.generate(widget.cols, (col) {
-                        return SizedBox(
-                          width: cellSize,
-                          height: 30, // Header height
-                          child: Center(
-                            child: Text(
-                              'c${col + 1}',
-                              style: theme.textTheme.titleMedium,
-                            ),
-                          ),
-                        );
-                      }),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      // Row Headers
-                      Column(
-                        children: List.generate(widget.rows, (row) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Column Headers
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                            width: 30), // Placeholder for row header column
+                        ...List.generate(widget.cols, (col) {
                           return SizedBox(
-                            width: 30, // Header width
-                            height: cellSize,
+                            width: cellSize,
+                            height: 30, // Header height
                             child: Center(
                               child: Text(
-                                'r${row + 1}',
+                                '${col}',
                                 style: theme.textTheme.titleMedium,
                               ),
                             ),
                           );
                         }),
-                      ),
-                      // Game Board
-                      SizedBox(
-                        width: cellSize * widget.cols,
-                        height: cellSize * widget.rows,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: 2),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: GridView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: widget.cols,
-                            ),
-                            itemCount: widget.rows * widget.cols,
-                            itemBuilder: (context, index) {
-                              int row = index ~/ widget.cols;
-                              int col = index % widget.cols;
-                              Cell cell = board[row][col];
-
-                              return GestureDetector(
-                                onTap: () => _revealCell(row, col),
-                                onLongPress: () => _flagCell(row, col),
-                                onSecondaryTap: () => _flagCell(row, col),
-                                child: AnimatedContainer(
-                                  duration: const Duration(milliseconds: 300),
-                                  decoration: BoxDecoration(
-                                    color:
-                                        _getCellColor(cell, Theme.of(context)),
-                                    border: Border.all(
-                                        color: Theme.of(context)
-                                            .scaffoldBackgroundColor,
-                                        width: 0.5),
-                                  ),
-                                  child: Center(
-                                    child: _buildCellContent(
-                                        cell, Theme.of(context)),
-                                  ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Row Headers
+                        Column(
+                          children: List.generate(widget.rows, (row) {
+                            return SizedBox(
+                              width: 30, // Header width
+                              height: cellSize,
+                              child: Center(
+                                child: Text(
+                                  '${row}',
+                                  style: theme.textTheme.titleMedium,
                                 ),
-                              );
-                            },
+                              ),
+                            );
+                          }),
+                        ),
+                        // Game Board
+                        SizedBox(
+                          width: cellSize * widget.cols,
+                          height: cellSize * widget.rows,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: widget.cols,
+                              ),
+                              itemCount: widget.rows * widget.cols,
+                              itemBuilder: (context, index) {
+                                int row = index ~/ widget.cols;
+                                int col = index % widget.cols;
+                                Cell cell = board[row][col];
+
+                                return GestureDetector(
+                                  onTap: () => _revealCell(row, col),
+                                  onLongPress: () => _flagCell(row, col),
+                                  onSecondaryTap: () => _flagCell(row, col),
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    decoration: BoxDecoration(
+                                      color:
+                                          _getCellColor(cell, Theme.of(context)),
+                                      border: Border.all(
+                                          color: Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          width: 0.5),
+                                    ),
+                                    child: Center(
+                                      child: _buildCellContent(
+                                          cell, Theme.of(context)),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
+                      ],
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
         const SizedBox(height: 20),

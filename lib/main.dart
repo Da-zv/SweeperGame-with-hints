@@ -133,7 +133,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _rows = 10;
   int _cols = 10;
-  int _mines = 15;
+  int _mines = 10;
   Key _gameKey = UniqueKey();
 
   void _showSettingsDialog() {
